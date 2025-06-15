@@ -12,7 +12,7 @@ function getNumberFact() {
     return;
   }
 
-  fetch(`http://numbersapi.com/${num}`)
+  fetch(`https://numbersapi.com/${num}`)
     .then(response => response.text())
     .then(data => {
       result.textContent = data;
