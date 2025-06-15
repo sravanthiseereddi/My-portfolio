@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const button = document.querySelector('button');
   button.addEventListener('click', getNumberFact);
 });
-
 function getNumberFact() {
   const num = document.getElementById('numberInput').value;
   const result = document.getElementById('factResult');
@@ -12,18 +11,20 @@ function getNumberFact() {
     return;
   }
 
-  // Use a CORS proxy to fetch data
-  const proxyUrl = 'https://api.allorigins.win/get?url=';
-  const targetUrl = `http://numbersapi.com/${num}?json`;
+  // Use a secure CORS proxy to avoid Mixed Content issues on GitHub Pages
+  const apiURL = `https://api.allorigins.win/raw?url=${encodeURIComponent('http://numbersapi.com/' + num)}`;
 
-  fetch(proxyUrl + encodeURIComponent(targetUrl))
-    .then(response => response.json())
+  fetch(apiURL)
+    .then(response => {
+      if (!response.ok) throw new Error('Network error');
+      return response.text();
+    })
     .then(data => {
-      const fact = JSON.parse(data.contents);
-      result.textContent = fact.text;
+      result.textContent = data;
     })
     .catch(error => {
       result.textContent = 'Something went wrong. Please try again.';
-      console.error('Error:', error);
+      console.error('Fetch error:', error);
     });
 }
+
