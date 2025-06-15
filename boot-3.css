@@ -1,0 +1,180 @@
+
+body{
+    padding: 0;
+    margin: 0;
+    border: 0;
+    overflow-x: hidden;
+    font-size: 16px;
+}
+.container-fluid{
+    background-image: url("https://cdn.pixabay.com/photo/2021/12/27/14/39/tulips-6897351_1280.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100vh;
+
+    
+
+}
+.container-fluid1{
+    background-image: url("https://cdn.pixabay.com/photo/2021/03/07/08/28/plum-blossom-6075483_1280.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    
+    padding-bottom: 100px;
+
+
+}
+.container-fluid2{
+    background-image: url("https://cdn.pixabay.com/photo/2024/03/24/17/10/background-8653526_1280.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    
+    padding-bottom: 30px;
+   
+    
+
+}
+#start{
+    background-color: rgba(69, 2, 2, 0.731);
+    color: whitesmoke;
+}
+#hey{
+    background-color:rgba(135, 207, 235, 0.89);
+    color: black;
+
+}
+#button1{
+   background: linear-gradient(to left,rgba(0, 33, 0, 0.365),rgba(198,238,15));
+   border: none;
+
+    border: none;
+}
+#button1:hover{
+    background:linear-gradient(to right,rgba(0, 33, 0, 0.365),rgba(198,238,15)); 
+    cursor: pointer;
+}
+#am{
+    text-decoration: none;
+    color: black;
+}
+
+a{
+    text-decoration: none;
+    color: whitesmoke;
+    position: relative;
+
+}
+a::after{
+    content: " ";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 4px;
+    background:linear-gradient(to right,rgba(0, 33, 0, 0.365),rgba(198,238,15));
+    transition: width 0.3s ease;
+
+}
+a:hover::after{
+    width: 100%;
+}
+a:hover{
+    color: aqua;
+}
+#image{
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+}
+.h1 {
+
+margin-bottom: -50px;
+    color: white;
+    text-shadow: 1px 1px 2px black;
+}
+#fly{
+    
+    height: 500px;
+    object-fit: cover;
+    border-radius: none;
+}
+#div{
+    width: 58%;
+}
+
+@media (max-width: 1024px) {
+    body {
+        font-size: 14px;
+    }
+
+    .h1 {
+        margin: 20px 0;
+    }
+
+    #fly {
+        max-height: 400px;
+    }
+    #div{
+        width: 64.3%;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        font-size: 13px;
+    }
+
+    .h1 {
+        margin: 20px 0;
+    }
+
+    #fly {
+        max-height: 450px;
+    }
+    #fly1{
+        max-height: 460px;
+    }
+
+    #start {
+        flex-direction: column !important;
+        text-align: center;
+    }
+    #div{
+        width: 97%;
+    }
+}
+
+@media (max-width: 576px) {
+    .container-fluid{
+        background-position: top;
+    }
+    body {
+        font-size: 12px;
+    }
+
+    #fly {
+        max-height: 350px;
+        max-width: 100% !important;
+    }
+
+    .container1 {
+        font-size: 10px;
+    }
+
+    .h1 {
+        margin-bottom: -30PX;
+    }
+    #div{
+        width: 100%;
+    }
+}
+
+
+

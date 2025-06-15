@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Number Facts</title>
+  <link rel="stylesheet" href="number.css" />
+</head>
+<body>
+  <div class="bg-image"></div>
+
+  <div class="number-facts-section" style="z-index: 3; position: relative; padding: 40px;">
+    <h1>Enter a number to get an interesting fact:</h1>
+    <input type="number" id="numberInput" placeholder="Enter a number" />
+    <button onclick="getNumberFact()">Get Fact</button>
+    <p id="factResult" style="margin-top: 20px; font-weight: bold;"></p>
+  </div>
+
+  <script src="number.js"></script>
+</body>
+</html>
