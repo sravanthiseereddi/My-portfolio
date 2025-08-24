@@ -20,6 +20,7 @@ for (let i = 0; i < bubbleCount; i++) {
 
   const duration = Math.random() * 5 + 5; 
   bubble.style.animationDuration = `${duration}s`;
+  
 
   bubbleContainer.appendChild(bubble);
 }

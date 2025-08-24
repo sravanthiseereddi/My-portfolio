@@ -59,7 +59,7 @@ ul a {
   text-decoration: none;
   margin-left: 30px;
   color: var(--link-color);
-  font-family: cursive;
+  font-family: sans-serif;
   font-size: 18px;
   position: relative;
   transition: color 0.3s ease;
@@ -242,7 +242,7 @@ background: linear-gradient(135deg, #d7e9ff 0%, #ffffff 100%);
 
   text-align: center;
   margin-top: 10px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: sans-serif;
   color:#555;
  
 

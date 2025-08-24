@@ -43,6 +43,7 @@ function mode() {
   const body = document.body;
   const icon = document.getElementById("but1");
 
+  
   const isDark = body.classList.toggle("dark-theme");
 
   if (isDark) {

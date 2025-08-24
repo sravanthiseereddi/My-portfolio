@@ -1,7 +1,8 @@
-let randomNumber = Math.floor(Math.random() * 10) + 1;
+
 let p1=document.getElementById("p1");
 let main = document.getElementById("main")
 function display(){
+    let randomNumber = Math.floor(Math.random() * 10) + 1;
 let i1 = document.getElementById("i1").value;
 
 

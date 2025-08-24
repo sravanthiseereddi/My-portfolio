@@ -67,7 +67,7 @@ ul a {
   text-decoration: none;
   margin-left: 30px;
   color: var(--link-color);
-  font-family: cursive;
+  font-family: sans-serif;
   font-size: 18px;
   position: relative;
   transition: color 0.3s ease;
