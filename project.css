@@ -235,7 +235,7 @@ background: linear-gradient(135deg, #d7e9ff 0%, #ffffff 100%);
 }
 
 .card-item .matter {
-  font-size: 0.9rem;
+  font-size: 0.6rem;
   font-weight: 500;
   margin-bottom: 10px;
   opacity: 0;
