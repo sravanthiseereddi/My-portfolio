@@ -188,8 +188,8 @@ ul a:hover {
   border-radius: 8px;
   background-image: var(--bg-after, conic-gradient(
     from var(--angle),
-    #ffe600, #00ff66, #ff007f, #ffff00, #bf00ff,
-    #ff8000, #00bfff, #ff0000, #4b014b, #ff66cc, #ffe600
+ #bf00ff,
+    #00bfff, #ff66cc,#bf00ff,#00bfff
   ));
   animation: 30s spin linear infinite;
 }

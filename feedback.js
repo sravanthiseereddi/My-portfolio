@@ -29,6 +29,12 @@ let inp3 = document.getElementById("inp3");
 let cont = document.getElementById("container2");
 
 
+function isValidEmail(email) {
+  const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return pattern.test(email);
+}
+
+
 function getRandomColor() {
   const letters = '0123456789ABCDEF';
   let color = '#';
@@ -37,6 +43,7 @@ function getRandomColor() {
   }
   return color;
 }
+
 
 function hehe() {
   if (inp1.value.trim() === "" || inp2.value.trim() === "" || inp3.value.trim() === "") {
@@ -49,49 +56,79 @@ function hehe() {
     return;
   }
 
-  let hey = document.createElement("div");
-  hey.classList.add("umbrella");
-  cont.appendChild(hey);
+  if (!isValidEmail(inp2.value)) {
+    alert("Please enter a valid email address.");
+    return;
+  }
 
-  let head = document.createElement("p");
-  head.classList.add("head1");
-
-  
   const randomColor = getRandomColor();
-  head.style.setProperty('--before-bg', randomColor);
 
-  head.innerHTML = inp1.value;
-  hey.appendChild(head);
-
-  let mail = document.createElement("p");
-  mail.classList.add("head2");
-  mail.innerHTML = inp2.value;
-  hey.appendChild(mail);
-
-  let message = document.createElement("p");
-  message.classList.add("head3");
-  message.innerHTML = inp3.value;
-  hey.appendChild(message);
+  saveData(inp1.value, inp2.value, inp3.value, randomColor).then(() => {
+    showData();
+  });
 
   inp1.value = "";
   inp2.value = "";
   inp3.value = "";
-
-  saveData();
 }
 
-function saveData() {
-  localStorage.setItem("name1", cont.innerHTML);
+
+async function saveData(name, email, message, color) {
+  try {
+    const res = await fetch("http://localhost:5000/api/messages", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name, email, message, color })
+    });
+
+    const data = await res.json();
+    if (!data.success) {
+      alert("Error: " + data.error);
+    }
+  } catch (err) {
+    console.error("Error saving data:", err);
+  }
 }
 
-function showData() {
-  cont.innerHTML = localStorage.getItem("name1");
+
+async function showData() {
+  try {
+    const res = await fetch("http://localhost:5000/api/messages");
+    const data = await res.json();
+
+    cont.innerHTML = "";
+    data.forEach(item => {
+      let hey = document.createElement("div");
+      hey.classList.add("umbrella");
+      cont.appendChild(hey);
+
+      let head = document.createElement("p");
+      head.classList.add("head1");
+      head.style.setProperty('--before-bg', item.color);
+      head.innerHTML = item.name;
+      hey.appendChild(head);
+
+      let mail = document.createElement("p");
+      mail.classList.add("head2");
+      mail.innerHTML = item.email;
+      hey.appendChild(mail);
+
+      let msg = document.createElement("p");
+      msg.classList.add("head3");
+      msg.innerHTML = item.message;
+      hey.appendChild(msg);
+    });
+  } catch (err) {
+    console.error("Error fetching data:", err);
+  }
 }
+
 showData();
 
 function refresh() {
   location.reload();
 }
+
 
 window.onload = function () {
   const savedTheme = localStorage.getItem("theme");

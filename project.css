@@ -265,6 +265,7 @@ background: linear-gradient(135deg, #d7e9ff 0%, #ffffff 100%);
 .card-item:hover .matter  {
   opacity: 1;
    animation: fadeUp 1s ease forwards;
+    font-family: sans-serif;
    
 }
 .card-item:hover .message-button{ animation: fadeUp 1s ease forwards;
@@ -385,22 +386,19 @@ display: flex;
 background-image: conic-gradient(
   from var(--angle),
      
-  #00ff66,    
-  #ff007f,   
-  #ffff00,    
-    
-  #ff8000,  
-  #00bfff,   
-  #ff0000,   
-  #4b014b,    
+ 
+  #00bfff,
+  #fa657cda
+ 
+ 
 
-  #ffe600  
 );
 
 
 animation: 30s spin linear infinite;
 
 }
+
  @keyframes spin {
   from{
     --angle: 0deg;
@@ -412,8 +410,8 @@ animation: 30s spin linear infinite;
 
 }
 .row1::before{
-    filter: blur(1.5rem);
-    opacity: 0.4;
+    filter: blur(1.3rem);
+    opacity: 0.2;
    
 }
 .img10 .para{
@@ -437,6 +435,7 @@ animation: 30s spin linear infinite;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+  
 }
 
 .img10 img{
@@ -463,6 +462,7 @@ animation: 30s spin linear infinite;
     letter-spacing: 0.05em;
     text-transform: uppercase;
     margin-bottom: 15px;
+    opacity: 0;
 }
 
 .swiper-pagination {
@@ -471,6 +471,10 @@ animation: 30s spin linear infinite;
 }
 .para button{
   margin-top: 20px;
+  opacity: 0;
+}
+.para p{
+   opacity: 0;
 }
 
 .swiper-pagination-bullet {
@@ -492,23 +496,23 @@ animation: 30s spin linear infinite;
   font-size: 23px;
   color: #555;
   
-  animation: fadeUp 0.8s ease-out forwards;
+  animation: fadeUp 0.8s ease forwards;
   
-  opacity: 0;
+  opacity: 1;
 }
 .row1:hover .para p{
   font-size: 14px;
   color: #555;
-  font-family: cursive;
-  animation: fadeUp 0.8s ease-out forwards;
+  font-family: sans-serif;
+  animation: fadeUp 0.8s ease forwards;
   
-  opacity: 0;
+  opacity: 1;
 }
 .row1:hover .para button{
   
-  animation: fadeUp 0.8s ease-out forwards;
+  animation: fadeUp 0.8s ease forwards;
   
-  opacity: 0;
+  opacity: 1;
 }
 
 @keyframes fadeUp {
