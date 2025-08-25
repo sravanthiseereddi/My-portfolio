@@ -6,16 +6,16 @@ const path = require("path");
 const app = express();
 app.use(express.json());
 app.use(cors());
-app.use(express.static(path.join(__dirname, "PORTFOLIO"))); // serve frontend
+app.use(express.static(path.join(__dirname, "PORTFOLIO"))); 
 
-// ✅ Connect to MongoDB (replace with your Mongo URI if using Atlas)
+
 mongoose.connect("mongodb+srv://feedbacks:feedback123@cluster0.yjno4lb.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0", {
   useNewUrlParser: true,
   useUnifiedTopology: true
 }).then(() => console.log("✅ MongoDB Connected"))
   .catch(err => console.log(err));
 
-// ✅ Schema
+
 const MessageSchema = new mongoose.Schema({
   name: String,
   email: String,
@@ -26,7 +26,7 @@ const MessageSchema = new mongoose.Schema({
 
 const Message = mongoose.model("Message", MessageSchema);
 
-// ✅ Save message
+
 app.post("/api/messages", async (req, res) => {
   try {
     const { name, email, message, color } = req.body;
@@ -38,11 +38,14 @@ app.post("/api/messages", async (req, res) => {
   }
 });
 
-// ✅ Get all messages
+
 app.get("/api/messages", async (req, res) => {
   const messages = await Message.find().sort({ createdAt: -1 });
   res.json(messages);
 });
 
-// Start server
-app.listen(5000, () => console.log("🚀 Server running at http://localhost:5000"));
+
+app.listen(5000, "0.0.0.0", () => {
+  console.log("Server running on http://192.168.1.25:5000");
+});
+
