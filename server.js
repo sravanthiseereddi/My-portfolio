@@ -45,7 +45,4 @@ app.get("/api/messages", async (req, res) => {
 });
 
 
-app.listen(5000, "0.0.0.0", () => {
-  console.log("Server running on http://192.168.1.25:5000");
-});
-
+app.listen(5000, () => console.log("🚀 Server running at http://localhost:5000"));

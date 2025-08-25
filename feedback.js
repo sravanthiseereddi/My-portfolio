@@ -1,7 +1,7 @@
-
 const bubbleContainer = document.getElementById('bubbles');
 const colors = ['blue-bubble', 'pink-bubble', 'purple-bubble', 'green-bubble', 'yellow-bubble'];
 const bubbleCount = 80;
+
 
 for (let i = 0; i < bubbleCount; i++) {
   const bubble = document.createElement('span');
@@ -28,10 +28,12 @@ let inp2 = document.getElementById("inp2");
 let inp3 = document.getElementById("inp3");
 let cont = document.getElementById("container2");
 
+
 function isValidEmail(email) {
   const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return pattern.test(email);
 }
+
 
 function getRandomColor() {
   const letters = '0123456789ABCDEF';
@@ -41,6 +43,7 @@ function getRandomColor() {
   }
   return color;
 }
+
 
 function hehe() {
   if (inp1.value.trim() === "" || inp2.value.trim() === "" || inp3.value.trim() === "") {
@@ -69,9 +72,10 @@ function hehe() {
   inp3.value = "";
 }
 
+
 async function saveData(name, email, message, color) {
   try {
-    const res = await fetch("https://yourapp.onrender.com/api/messages", {
+    const res = await fetch("http://localhost:5000/api/messages", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ name, email, message, color })
@@ -79,49 +83,39 @@ async function saveData(name, email, message, color) {
 
     const data = await res.json();
     if (!data.success) {
-      alert("Error: " + (data.error || "Unknown error"));
+      alert("Error: " + data.error);
     }
   } catch (err) {
     console.error("Error saving data:", err);
   }
 }
 
+
 async function showData() {
   try {
-    const res = await fetch("https://yourapp.onrender.com/api/messages");
+    const res = await fetch("http://localhost:5000/api/messages");
     const data = await res.json();
 
-    console.log("Fetched data:", data); // 👀 Debug log
-
     cont.innerHTML = "";
-
-    // handle both: array directly OR {messages: [...]}
-    const messages = Array.isArray(data) ? data : data.messages;
-
-    if (!messages || messages.length === 0) {
-      cont.innerHTML = "<p>No messages found.</p>";
-      return;
-    }
-
-    messages.forEach(item => {
+    data.forEach(item => {
       let hey = document.createElement("div");
       hey.classList.add("umbrella");
       cont.appendChild(hey);
 
       let head = document.createElement("p");
       head.classList.add("head1");
-      head.style.setProperty('--before-bg', item.color || "#000");
-      head.innerHTML = item.name || "No Name";
+      head.style.setProperty('--before-bg', item.color);
+      head.innerHTML = item.name;
       hey.appendChild(head);
 
       let mail = document.createElement("p");
       mail.classList.add("head2");
-      mail.innerHTML = item.email || "No Email";
+      mail.innerHTML = item.email;
       hey.appendChild(mail);
 
       let msg = document.createElement("p");
       msg.classList.add("head3");
-      msg.innerHTML = item.message || "No Message";
+      msg.innerHTML = item.message;
       hey.appendChild(msg);
     });
   } catch (err) {
@@ -134,6 +128,7 @@ showData();
 function refresh() {
   location.reload();
 }
+
 
 window.onload = function () {
   const savedTheme = localStorage.getItem("theme");
@@ -162,4 +157,3 @@ function mode() {
     icon.classList.replace("fa-sun", "fa-moon");
   }
 }
-
