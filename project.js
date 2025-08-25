@@ -48,7 +48,7 @@ for (let i = 0; i < bubbleCount; i++) {
   bubble.classList.add(color);
 
   
-  const size = Math.random() * 12 + 12; 
+  const size = Math.random() * 10 + 10; 
   bubble.style.width = `${size}px`;
   bubble.style.height = `${size}px`;
 
