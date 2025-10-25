@@ -11,7 +11,7 @@ function getNumberFact() {
     return;
   }
 
-  // Use a secure CORS proxy to avoid Mixed Content issues on GitHub Pages
+  
   const apiURL = `https://api.allorigins.win/raw?url=${encodeURIComponent('http://numbersapi.com/' + num)}`;
 
   fetch(apiURL)

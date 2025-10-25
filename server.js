@@ -6,7 +6,24 @@ const path = require("path");
 const app = express();
 app.use(express.json());
 app.use(cors());
-app.use(express.static(path.join(__dirname, "PORTFOLIO"))); 
+app.use(express.static(path.join(__dirname))); 
+
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "index.html"));
+});
+app.get("/project", (req, res) => {
+  res.sendFile(path.join(__dirname, "project.html"));
+});
+app.get("/skils", (req, res) => {
+  res.sendFile(path.join(__dirname, "skills.html"));
+});
+app.get("/about", (req, res) => {
+  res.sendFile(path.join(__dirname, "about.html"));
+});
+app.get("/feedback", (req, res) => {
+  res.sendFile(path.join(__dirname, "feedback.html"));
+});
+
 
 
 mongoose.connect("mongodb+srv://feedbacks:feedback123@cluster0.yjno4lb.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0", {
@@ -37,6 +54,7 @@ app.post("/api/messages", async (req, res) => {
     res.status(500).json({ success: false, error });
   }
 });
+
 
 
 app.get("/api/messages", async (req, res) => {
