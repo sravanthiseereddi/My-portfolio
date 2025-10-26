@@ -1,4 +1,4 @@
-require('dotenv').config(); // Load .env variables
+require('dotenv').config(); // Load environment variables
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
@@ -6,8 +6,12 @@ const path = require("path");
 
 const app = express();
 app.use(express.json());
-app.use(cors());
-app.use(express.static(path.join(__dirname))); 
+
+// Use CORS to allow frontend requests
+app.use(cors()); 
+
+// Serve static files
+app.use(express.static(path.join(__dirname)));
 
 // Serve HTML pages
 app.get("/", (req, res) => res.sendFile(path.join(__dirname, "index.html")));
@@ -43,7 +47,7 @@ app.post("/api/messages", async (req, res) => {
     await newMessage.save();
     res.json({ success: true, msg: "Message saved!" });
   } catch (error) {
-    res.status(500).json({ success: false, error });
+    res.status(500).json({ success: false, error: error.message });
   }
 });
 
