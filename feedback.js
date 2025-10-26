@@ -1,129 +1,108 @@
+// Bubbles
 const bubbleContainer = document.getElementById('bubbles');
 const colors = ['blue-bubble', 'pink-bubble', 'purple-bubble', 'green-bubble', 'yellow-bubble'];
 const bubbleCount = 80;
 
-// Generate bubbles
 for (let i = 0; i < bubbleCount; i++) {
   const bubble = document.createElement('span');
-  bubble.classList.add('bubble');
-  const color = colors[Math.floor(Math.random() * colors.length)];
-  bubble.classList.add(color);
-
+  bubble.classList.add('bubble', colors[Math.floor(Math.random() * colors.length)]);
   const size = Math.random() * 10 + 10;
   bubble.style.width = `${size}px`;
   bubble.style.height = `${size}px`;
-
   bubble.style.left = `${Math.random() * 100}%`;
   bubble.style.bottom = `${Math.random() * 100}%`;
-
-  const duration = Math.random() * 5 + 5;
-  bubble.style.animationDuration = `${duration}s`;
-
+  bubble.style.animationDuration = `${Math.random() * 5 + 5}s`;
   bubbleContainer.appendChild(bubble);
 }
 
-let inp1 = document.getElementById("inp1");
-let inp2 = document.getElementById("inp2");
-let inp3 = document.getElementById("inp3");
-let cont = document.getElementById("container2");
+// Inputs
+const inp1 = document.getElementById("inp1");
+const inp2 = document.getElementById("inp2");
+const inp3 = document.getElementById("inp3");
+const cont = document.getElementById("container2");
 
-// Validate email
+// Helpers
 function isValidEmail(email) {
-  const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return pattern.test(email);
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
-// Random color generator
 function getRandomColor() {
-  const letters = '0123456789ABCDEF';
-  let color = '#';
-  for (let i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 16)];
-  }
-  return color;
+  return '#' + Math.floor(Math.random() * 16777215).toString(16);
 }
+
+function refresh() { location.reload(); }
 
 // Submit feedback
-function hehe() {
-  if (inp1.value.trim() === "" || inp2.value.trim() === "" || inp3.value.trim() === "") {
-    alert("Please fill in all fields.");
-    return;
-  }
-  if (inp1.value.length <= 4) {
-    alert("Your name must be more than 4 characters.");
-    return;
-  }
-  if (!isValidEmail(inp2.value)) {
-    alert("Please enter a valid email address.");
-    return;
-  }
+async function submitFeedback(event) {
+  event.preventDefault();
 
-  const randomColor = getRandomColor();
+  if (!inp1.value.trim() || !inp2.value.trim() || !inp3.value.trim()) return alert("Please fill in all fields.");
+  if (inp1.value.length <= 4) return alert("Your name must be more than 4 characters.");
+  if (!isValidEmail(inp2.value)) return alert("Please enter a valid email address.");
 
-  saveData(inp1.value, inp2.value, inp3.value, randomColor)
-    .then(() => showData());
+  const color = getRandomColor();
+  const data = { name: inp1.value, email: inp2.value, message: inp3.value, color };
 
-  inp1.value = "";
-  inp2.value = "";
-  inp3.value = "";
-}
-
-// Save data to backend
-async function saveData(name, email, message, color) {
   try {
     const res = await fetch("/api/messages", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name, email, message, color })
+      body: JSON.stringify(data)
     });
-    const data = await res.json();
-    if (!data.success) alert("Error: " + data.error);
+    const result = await res.json();
+    if (!result.success) return alert("Error: " + (result.error || "Failed to save message"));
+
+    // Clear inputs
+    inp1.value = inp2.value = inp3.value = "";
+
+    // Reload messages
+    fetchMessages();
   } catch (err) {
     console.error("Error saving data:", err);
+    alert("Error saving message!");
   }
 }
 
-// Show messages from backend
-async function showData() {
+// Fetch & display messages
+async function fetchMessages() {
   try {
     const res = await fetch("/api/messages");
     const data = await res.json();
 
     cont.innerHTML = "";
     data.forEach(item => {
-      let hey = document.createElement("div");
-      hey.classList.add("umbrella");
-      cont.appendChild(hey);
+      const div = document.createElement("div");
+      div.classList.add("umbrella");
 
-      let head = document.createElement("p");
-      head.classList.add("head1");
-      head.style.setProperty('--before-bg', item.color);
-      head.innerHTML = item.name;
-      hey.appendChild(head);
+      const name = document.createElement("p");
+      name.classList.add("head1");
+      name.style.setProperty('--before-bg', item.color);
+      name.textContent = item.name;
 
-      let mail = document.createElement("p");
-      mail.classList.add("head2");
-      mail.innerHTML = item.email;
-      hey.appendChild(mail);
+      const email = document.createElement("p");
+      email.classList.add("head2");
+      email.textContent = item.email;
 
-      let msg = document.createElement("p");
+      const msg = document.createElement("p");
       msg.classList.add("head3");
-      msg.innerHTML = item.message;
-      hey.appendChild(msg);
+      msg.textContent = item.message;
+
+      const date = document.createElement("p");
+      date.classList.add("head4");
+      date.textContent = new Date(item.createdAt).toLocaleString();
+
+      div.append(name, email, msg, date);
+      cont.appendChild(div);
     });
   } catch (err) {
-    console.error("Error fetching data:", err);
+    console.error("Error fetching messages:", err);
   }
 }
 
-showData();
+// Initial load
+fetchMessages();
 
-// Refresh page
-function refresh() {
-  location.reload();
-}
-
-// Dark mode
+// Dark/Light mode
 window.onload = function () {
   const savedTheme = localStorage.getItem("theme");
   const icon = document.getElementById("but1");
@@ -137,11 +116,11 @@ window.onload = function () {
   }
 };
 
-function mode() {
+function toggleMode() {
   const body = document.body;
   const icon = document.getElementById("but1");
-
   const isDark = body.classList.toggle("dark-theme");
+
   if (isDark) {
     localStorage.setItem("theme", "dark");
     icon.classList.replace("fa-moon", "fa-sun");
