@@ -61,7 +61,6 @@ async function submitFeedback(event) {
   }
 }
 
-// Fetch & display messages
 async function fetchMessages() {
   try {
     const res = await fetch("/api/messages");
