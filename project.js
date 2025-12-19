@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 const bubbleContainer = document.getElementById('bubbles');
 const colors = ['blue', 'pink', 'purple', 'green', 'yellow'];
-const bubbleCount = 300;
+const bubbleCount = 80;
 
 for (let i = 0; i < bubbleCount; i++) {
   const bubble = document.createElement('span');
@@ -48,7 +48,7 @@ for (let i = 0; i < bubbleCount; i++) {
   bubble.classList.add(color);
 
   
-  const size = Math.random() * 10 + 10; 
+  const size = Math.random() * 20 + 10; 
   bubble.style.width = `${size}px`;
   bubble.style.height = `${size}px`;
 

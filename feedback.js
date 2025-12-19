@@ -1,4 +1,4 @@
-// Bubbles
+
 const bubbleContainer = document.getElementById('bubbles');
 const colors = ['blue-bubble', 'pink-bubble', 'purple-bubble', 'green-bubble', 'yellow-bubble'];
 const bubbleCount = 80;
@@ -6,7 +6,7 @@ const bubbleCount = 80;
 for (let i = 0; i < bubbleCount; i++) {
   const bubble = document.createElement('span');
   bubble.classList.add('bubble', colors[Math.floor(Math.random() * colors.length)]);
-  const size = Math.random() * 10 + 10;
+  const size = Math.random() * 20 + 10;
   bubble.style.width = `${size}px`;
   bubble.style.height = `${size}px`;
   bubble.style.left = `${Math.random() * 100}%`;
@@ -15,13 +15,13 @@ for (let i = 0; i < bubbleCount; i++) {
   bubbleContainer.appendChild(bubble);
 }
 
-// Inputs
+
 const inp1 = document.getElementById("inp1");
 const inp2 = document.getElementById("inp2");
 const inp3 = document.getElementById("inp3");
 const cont = document.getElementById("container2");
 
-// Helpers
+
 function isValidEmail(email) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
@@ -32,7 +32,6 @@ function getRandomColor() {
 
 function refresh() { location.reload(); }
 
-// Submit feedback
 async function submitFeedback(event) {
   event.preventDefault();
 
@@ -52,10 +51,9 @@ async function submitFeedback(event) {
     const result = await res.json();
     if (!result.success) return alert("Error: " + (result.error || "Failed to save message"));
 
-    // Clear inputs
+  
     inp1.value = inp2.value = inp3.value = "";
 
-    // Reload messages
     fetchMessages();
   } catch (err) {
     console.error("Error saving data:", err);
@@ -99,10 +97,9 @@ async function fetchMessages() {
   }
 }
 
-// Initial load
 fetchMessages();
 
-// Dark/Light mode
+
 window.onload = function () {
   const savedTheme = localStorage.getItem("theme");
   const icon = document.getElementById("but1");

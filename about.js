@@ -1,6 +1,6 @@
 const bubbleContainer = document.getElementById('bubbles');
 const colors = ['blue-bubble', 'pink-bubble', 'purple-bubble', 'green-bubble', 'yellow-bubble'];
-const bubbleCount = 300;
+const bubbleCount = 90;
 
 
 for (let i = 0; i < bubbleCount; i++) {
@@ -10,7 +10,7 @@ for (let i = 0; i < bubbleCount; i++) {
   const color = colors[Math.floor(Math.random() * colors.length)];
   bubble.classList.add(color);
 
-  const size = Math.random() * 10 + 10;
+  const size = Math.random() * 20 + 10;
   bubble.style.width = `${size}px`;
   bubble.style.height = `${size}px`;
 
