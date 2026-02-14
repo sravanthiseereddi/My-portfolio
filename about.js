@@ -1,13 +1,13 @@
 const bubbleContainer = document.getElementById('bubbles');
 const colors = ['blue-bubble', 'pink-bubble', 'purple-bubble', 'green-bubble', 'yellow-bubble'];
-const bubbleCount = 90;
+const bubbleCount = 40;
 
 
 for (let i = 0; i < bubbleCount; i++) {
   const bubble = document.createElement('span');
   bubble.classList.add('bubble');
 
-  const color = colors[Math.floor(Math.random() * colors.length)];
+  const color = colors[Math.floor(Math.random() * colors.length)]; 
   bubble.classList.add(color);
 
   const size = Math.random() * 20 + 10;
@@ -20,7 +20,7 @@ for (let i = 0; i < bubbleCount; i++) {
   const duration = Math.random() * 5 + 5;
   bubble.style.animationDuration = `${duration}s`;
 
-  bubbleContainer.appendChild(bubble);
+  bubbleContainer.appendChild(bubble); 
 }
 
 window.onload = function () {

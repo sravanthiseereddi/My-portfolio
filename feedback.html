@@ -1,64 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Feedback</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-    <link rel="stylesheet" href="feedack.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feedback</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+<link rel="stylesheet" href="feedack.css">
 </head>
+
 <body>
-   <div class="container">
-    <div class="bubbles" id="bubbles"></div>
-    
-        <nav id="navs">
-                
-                <a id="anchor" href="https://www.linkedin.com/in/seereddilakshmisravanthi"><i class="fa-brands fa-linkedin"></i></a>
-                <ul id="ul1" >
-                    <li> <a href="index.html" id="a1">home</a></li>
-                    <li> <a href="about.html" id="a2">about</a></li>
-                    <li> <a href="project.html" id="a3">projects</a></li>
-                    <li> <a href="skills.html" id="a4">skills</a></li>
-                    <li> <a href="feedback.html" id="a5">feedback</a></li>
-                </ul>
-                <button onclick="toggleMode()" id="but2" > <i class="fa-solid fa-moon" id="but1"></i></button>
 
-            </nav>
-   
+<div class="container">
+<div class="bubbles" id="bubbles"></div>
 
-    <div class="container1">
-        <!-- Added onsubmit here -->
-        <form onsubmit="submitFeedback(event)">
-          <h2><span>Feedback</span> form</h2>
+<!-- ===== NAVBAR (UNCHANGED) ===== -->
+<nav id="navs">
+        
+<a id="anchor" href="https://www.linkedin.com/in/seereddilakshmisravanthi">
+<i class="fa-brands fa-linkedin"></i>
+</a>
 
-          <div class="red">
-            <label for="inp1">Name</label>
-            <input type="text" id="inp1" placeholder="enter your name">
-          </div>
 
-          <div class="red">
-            <label for="inp2">Email</label>
-            <input type="email" id="inp2" placeholder="enter your email-id">
-          </div>
 
-          <div class="red">
-            <label for="inp3">Message</label>
-            <input type="text" id="inp3" placeholder="your message goes here...">
-          </div>
+<ul id="ul1">
+<li><a href="index.html" id="a1">home</a></li>
+<li><a href="about.html" id="a2">about</a></li>
+<li><a href="project.html" id="a3">projects</a></li>
+<li><a href="skills.html" id="a4">skills</a></li>
+<li><a href="feedback.html" id="a5">feedback</a></li>
+</ul>
 
-          <div class="red1">
-            <input type="submit" value="Send">
-            <input type="reset" onclick="refresh()" value="Reload">
-          </div>
-        </form>
-    </div>
+<button onclick="toggleMode()" id="but2">
+<i class="fa-solid fa-moon" id="but1"></i>
+</button>
 
-    <div class="main5">
-        <div class="container2" id="container2"></div>
-    </div>
-  </div>
-  
+</nav>
+<!-- ===== END NAVBAR ===== -->
 
-  <script src="feedback.js"></script>
+
+<!-- ===== MAIN SPLIT LAYOUT ===== -->
+<div class="main-layout">
+
+<!-- LEFT SIDE -->
+<div class="left-section">
+
+<!-- FORM -->
+<div class="container1">
+<form onsubmit="submitFeedback(event)">
+
+<h2><span>Feedback</span> form</h2>
+
+<div class="red">
+<label for="inp1">Name</label>
+<input type="text" id="inp1" placeholder="enter your name">
+</div>
+
+<div class="red">
+<label for="inp2">Email</label>
+<input type="email" id="inp2" placeholder="enter your email-id">
+</div>
+
+<div class="red">
+<label for="inp3">Message</label>
+<input type="text" id="inp3" placeholder="your message goes here...">
+</div>
+
+<div class="red1">
+<input type="submit" value="Send">
+<input type="reset" onclick="refresh()" value="Reload">
+</div>
+
+</form>
+</div>
+
+<!-- CONTACT DETAILS -->
+<div class="contact-box">
+<h3>Contact Details</h3>
+<p>Email : seereddisravanthi8@gmail.com</p>
+<p>Phone : +91 7013531455</p>
+<p>Location : Andhra Pradesh</p>
+</div>
+
+</div>
+
+<!-- RIGHT SIDE -->
+<div class="right-section">
+<div class="container2" id="container2"></div>
+</div>
+
+</div>
+</div>
+
+<script src="feedback.js"></script>
 </body>
 </html>

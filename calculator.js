@@ -13,7 +13,7 @@ function updateDisplay() {
 }
 
 for (let i = 0; i < arr_list.length; i++) {
-    let btn = document.getElementById(arr_list[i]);
+    let btn = document.getElementById(arr_list[i]); 
 
     btn.addEventListener("click", () => {
         let value = btn.textContent.trim();

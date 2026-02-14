@@ -1,7 +1,7 @@
 
 const bubbleContainer = document.getElementById('bubbles');
 const colors = ['blue-bubble', 'pink-bubble', 'purple-bubble', 'green-bubble', 'yellow-bubble'];
-const bubbleCount = 80;
+const bubbleCount = 40;
 
 for (let i = 0; i < bubbleCount; i++) {
   const bubble = document.createElement('span');

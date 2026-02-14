@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 const bubbleContainer = document.getElementById('bubbles');
 const colors = ['blue', 'pink', 'purple', 'green', 'yellow'];
-const bubbleCount = 80;
+const bubbleCount = 40;
 
 for (let i = 0; i < bubbleCount; i++) {
   const bubble = document.createElement('span');

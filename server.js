@@ -52,7 +52,7 @@ app.post("/api/messages", async (req, res) => {
 
 app.get("/api/messages", async (req, res) => {
   try {
-    const messages = await Message.find().sort({ createdAt: -1 }); // newest first
+    const messages = await Message.find().sort({ createdAt: -1 }); 
     res.json(messages);
   } catch (err) {
     console.error("Error fetching messages:", err);

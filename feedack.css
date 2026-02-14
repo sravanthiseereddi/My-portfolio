@@ -458,6 +458,90 @@ input[type=submit], input[type=reset]{
 input[type=submit]:hover, input[type=reset]:hover{
   background: #00ccff;
 }
+/* ===== MAIN SPLIT LAYOUT ===== */
+
+.main-layout{
+display:flex;
+gap:30px;
+
+
+padding-right:40px;
+min-height:100vh;
+}
+
+/* LEFT SIDE */
+.left-section{
+width:40%;
+display:flex;
+flex-direction:column;
+justify-content: center;
+align-items: center;
+gap:10px;
+}
+
+/* RIGHT SIDE */
+.right-section{
+width:60%;
+margin-top: 140px;
+}
+
+/* CONTACT BOX */
+.contact-box{
+background: var(--card-bg);
+    box-shadow: 0 0 5px #555;
+    padding: 20px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.09);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+
+width: 70%;
+}
+
+.contact-box h3{
+margin-bottom:15px;
+text-decoration: underline;
+background: var(--primary-gradient);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+.contact-box p{
+background: var(--primary-gradient);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+/* MESSAGE CONTAINER HEIGHT FIX */
+.container2{
+width:100%;
+height:70vh;
+overflow-y:auto;
+ background: rgba(255, 255, 255, 0.09);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+}
+
+/* ===== MOBILE RESPONSIVE ===== */
+
+@media(max-width:900px){
+
+.main-layout{
+flex-direction:column;
+padding-left:20px;
+padding-right:20px;
+}
+
+.left-section,
+.right-section{
+width:100%;
+}
+
+#inp1,#inp2,#inp3{
+width:100%;
+}
+
+}
+
 
 @media (max-width: 768px) {
   nav {
