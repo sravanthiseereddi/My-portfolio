@@ -476,12 +476,13 @@ flex-direction:column;
 justify-content: center;
 align-items: center;
 gap:10px;
+margin-bottom: 20px;
 }
 
 /* RIGHT SIDE */
 .right-section{
 width:60%;
-margin-top: 140px;
+margin-top: 110px;
 }
 
 /* CONTACT BOX */
@@ -513,7 +514,7 @@ background: var(--primary-gradient);
 /* MESSAGE CONTAINER HEIGHT FIX */
 .container2{
 width:100%;
-height:70vh;
+height:75vh;
 overflow-y:auto;
  background: rgba(255, 255, 255, 0.09);
     backdrop-filter: blur(15px);
